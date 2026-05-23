@@ -1,0 +1,14 @@
+﻿# Backend
+zta-backend/__pycache__/
+zta-backend/*.pyc
+zta-backend/venv/
+zta-backend/.env
+
+# Frontend
+zero-trust-frontend/node_modules/
+zero-trust-frontend/build/
+zero-trust-frontend/.env.local
+
+# Notebooks
+notebooks/.ipynb_checkpoints/
+.DS_Store
