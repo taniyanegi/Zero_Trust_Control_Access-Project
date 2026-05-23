@@ -1,116 +1,139 @@
-AI-Powered Zero Trust Access Control System
-Overview
-This project implements a Zero Trust security system that uses machine learning to assess login risks and monitor user sessions in real-time. Instead of trusting users by default, the system continuously verifies access based on behavioral patterns and contextual information.
-What Does It Do?
+🚀 AI-Powered Zero Trust Access Control System
+📌 Overview
 
-Login Risk Assessment: When a user logs in, the system analyzes factors like IP address, device type, location, and time to calculate a risk score
-Session Monitoring: During an active session, the system watches for unusual behavior that might indicate a security threat
-Automatic Decision Making: Based on risk scores, the system can allow access, challenge the user for additional verification, or deny access entirely
+An intelligent cybersecurity system that implements the Zero Trust Security Model using Machine Learning to continuously verify users instead of trusting them by default.
 
-Tech Stack
-Frontend:
+The system performs:
 
+🔐 Login Risk Assessment
+👁️ Continuous Session Monitoring
+🤖 AI-Based Threat Detection
+⚡ Automatic Access Decisions
+🛡️ Features
+Feature	Description
+Risk-Based Authentication	Calculates login risk score using ML
+Session Monitoring	Detects suspicious behavior in real time
+JWT Authentication	Secure token-based authentication
+Admin Dashboard	Monitor users, risks, and anomalies
+Audit Logging	Tracks all activities for security review
+Redis Session Store	Fast and scalable session management
+PostgreSQL Database	Stores users and security logs
+🧠 Machine Learning Models
+1️⃣ Login Risk Assessment
+Model Used:
+Calibrated Random Forest
+Features:
+IP Address
+Device Information
+Browser
+Login Time
+Geolocation
+Login History
+Risk Levels
+Score	Risk
+0.0 - 0.3	🟢 Low
+0.3 - 0.7	🟡 Medium
+0.7 - 1.0	🔴 High
+Performance
+Metric	Value
+Accuracy	91.5%
+Precision	89.2%
+Recall	93.8%
+2️⃣ Session Anomaly Detection
+Model Used:
+Isolation Forest
+Monitored Activities:
+Request Frequency
+Endpoint Access Patterns
+Data Downloads
+User Navigation Behavior
+Performance
+Metric	Value
+Detection Rate	87.3%
+False Positive Rate	4.2%
+⚙️ Tech Stack
+Frontend
 React.js
-JavaScript/HTML/CSS
-
-Backend:
-
+JavaScript
+HTML/CSS
+Backend
 Python Flask
-PostgreSQL (Database)
-Redis (Session management)
-
-Machine Learning:
-
-Calibrated Random Forest - for login risk scoring
-Isolation Forest - for detecting anomalous session behavior
-scikit-learn, pandas, numpy
-
-DevOps:
-
+PostgreSQL
+Redis
+Machine Learning
+scikit-learn
+pandas
+numpy
+DevOps
 Docker
+🏗️ Project Architecture
+User Login
+    ↓
+Frontend (React)
+    ↓
+Flask REST API
+    ↓
+Risk Assessment ML Model
+    ↓
+Decision Engine
+ ┌───────────────┐
+ │ Allow Access  │
+ │ Challenge MFA │
+ │ Deny Access   │
+ └───────────────┘
+    ↓
+Session Monitoring
+    ↓
+Isolation Forest
+    ↓
+Threat Detection & Alerts
+📂 Project Structure
+AI-Zero-Trust-System/
+│
+├── notebooks/               # ML model training notebooks
+├── zero-trust-frontend/     # React frontend
+├── zta-backend/             # Flask backend
+├── docker-compose.yml
+├── README.md
+└── requirements.txt
+🔄 Workflow
+Step 1: User Login
 
-Project Structure
-├── notebooks/              # Jupyter notebooks for ML model training
-├── zero-trust-frontend/    # React frontend
-├── zta-backend/           # Flask backend API
-└── README.md
-How We Built It
-1. Machine Learning Models
-Login Risk Model (Calibrated Random Forest):
+The user attempts to login using credentials.
 
-Trained on login attempt data with features: IP address, device info, location, time, login history
-Outputs risk probability (0-1): Low (0-0.3), Medium (0.3-0.7), High (0.7-1.0)
-Achieved 91.5% accuracy
+Step 2: Feature Extraction
 
-Session Anomaly Detection (Isolation Forest):
+The system extracts:
 
-Monitors user behavior during sessions: request patterns, endpoints accessed, data downloads
-Detects unusual activity that deviates from normal behavior
-Anomaly detection rate: 87.3%
+IP address
+Device info
+Browser details
+Login time
+Geolocation
+Step 3: Risk Prediction
 
-2. Backend Development
+The ML model predicts a risk score.
 
-Built REST API with Flask
-Integrated ML models for real-time predictions
-Implemented JWT authentication
-Set up PostgreSQL for user data and Redis for session storage
-Created admin endpoints for monitoring and management
+Step 4: Decision Engine
 
-3. Frontend Development
+Based on the score:
 
-Built user interface with React
-Created login and registration pages
-Developed admin dashboard for monitoring users and risk scores
-Implemented session management
+✅ Allow Access
+⚠️ Ask for Verification
+❌ Deny Access
+Step 5: Session Monitoring
 
-4. Integration
+The system continuously tracks user behavior.
 
-Connected frontend to backend via REST APIs
-Implemented real-time risk assessment on login
-Added continuous session monitoring
-Created automated response based on risk levels
+Step 6: Anomaly Detection
 
-Manual Setup
-Backend:
-bashcd zta-backend
-pip install -r requirements.txt
-python run.py
-Frontend:
-bashcd zero-trust-frontend
-npm install
-npm start
-Key Features
+Isolation Forest identifies suspicious activity.
 
-Real-time login risk scoring
-Continuous session behavior monitoring
-Automatic threat detection and response
-Admin dashboard for security monitoring
-User activity logging and audit trails
 
-ML Model Performance
-Calibrated Random Forest (Login Risk):
 
-Accuracy: 91.5%
-Precision: 89.2%
-Recall: 93.8%
-
-Isolation Forest (Session Anomaly):
-
-Anomaly Detection Rate: 87.3%
-False Positive Rate: 4.2%
-
-How It Works
-
-User attempts to login → System extracts features (IP, device, location, time)
-ML model predicts risk score → Decision engine allows/challenges/denies access
-If allowed, session starts → Continuous monitoring of user behavior
-Anomaly detection runs in background → Alerts/terminates session if threat detected
-All events logged for audit and model retraining
-
-Future Improvements
-
-Multi-factor authentication
-Biometric integration
-Mobile application
-Advanced threat intelligence integration
-Real-time alerting via email/SMS
+📊 Future Improvements
+✅ Biometric Verification
+✅ Real-Time Email/SMS Alerts
+✅ Threat Intelligence Integration
+✅ Mobile Application
+✅ SIEM Integration
